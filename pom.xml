@@ -15,6 +15,7 @@
         <module>ehdc-control</module>
         <module>ehdc-parser</module>
         <module>endc-light</module>
+        <module>ehdc-calibrate</module>
     </modules>
 
     <dependencies>
