@@ -226,15 +226,15 @@ public class SpiADC {
     public double readChannel(int channel) throws IOException, ConversionException{
         spi.write(new byte[]{(byte)(controlHigh | (channel << 2)) , controlLow});
         byte[] result = spi.write(new byte[]{(byte)(controlHigh | (channel << 2)) , controlLow});
-     //   System.out.println(Util.tpBinary(result[0]));
-     //   System.out.println(Util.tpBinary(result[1]));
         int ch = (result[0]>>>4) & 0xf;
         int vv = (result[0] & 0b00001111)*256 + result[1];
         if (result[1] < 0)
             vv += 256;
+
         if (ch != channel)
             throw new ConversionException("Returned channel number is incorrect." +
                                     String.format(" Target chanel is %d, but returned %d", channel, ch));
+
         else {
             if ((controlLow & 0b00100000) == 0)
                 vv *= 2;

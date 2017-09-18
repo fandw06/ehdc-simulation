@@ -27,7 +27,7 @@ public class Main {
         }
         else if (cmd.hasOption("c")) {
             Calibrator c = new Calibrator();
-            c.run();
+            c.testSingle();
         }
         else {
             System.out.println("Invalid option, see -h for help.");
